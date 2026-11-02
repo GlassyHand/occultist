@@ -1,0 +1,35 @@
+/* 인트로 컷씬: 중앙의 중간 크기 액자 + 하단 하얀 대사 */
+#screen-intro { cursor: pointer; }
+#screen-intro .bg { filter: brightness(.45) saturate(.9); }
+#screen-intro .intro-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .7) 100%);
+}
+
+.intro-frame {
+  position: absolute; left: 50%; top: 130px; width: 1120px; height: 630px; transform: translateX(-50%);
+  background: #0b0705; overflow: hidden;
+  border: 14px solid #b88a3c; /* 프레임은 하나만 */
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, .55), 0 18px 50px rgba(0, 0, 0, .8);
+}
+.intro-frame img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  image-rendering: auto; opacity: 1; transition: opacity .35s ease;
+}
+.intro-frame img.hide { opacity: 0; }
+
+.intro-text {
+  position: absolute; left: 50%; top: 810px; width: 1200px; transform: translateX(-50%);
+  min-height: 130px; text-align: center; color: #fff;
+  font-family: var(--serif, serif); font-size: 42px; font-weight: 700; line-height: 1.55;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .9), 0 0 18px rgba(0, 0, 0, .8);
+  transition: opacity .3s ease;
+}
+.intro-text.hide { opacity: 0; }
+
+.intro-next {
+  position: absolute; left: 50%; bottom: 60px; transform: translateX(-50%);
+  color: rgba(255, 255, 255, .7); font-size: 26px; letter-spacing: 2px;
+  animation: introBlink 1.4s ease-in-out infinite;
+}
+@keyframes introBlink { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }

@@ -1,0 +1,75 @@
+/* 모달 · 도감 · 설정 */
+.modal-layer { position: absolute; inset: 0; z-index: 100; display: none; background: rgba(0,0,0,.6); }
+.modal-layer.show { display: block; }
+.modal {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); min-width: 780px; max-width: 1300px;
+  background: #d9d9d9; border: 6px solid #2b1d12; padding: 56px 70px 48px; text-align: center; color: #111;
+  box-shadow: 0 14px 0 rgba(0,0,0,.4); animation: popC .15s ease-out;
+}
+@keyframes popC { from { opacity: 0; transform: translate(-50%, -50%) scale(.94); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+.modal h3 { font-size: 48px; font-weight: 900; margin-bottom: 14px; }
+.modal p { font-size: 36px; font-weight: 700; line-height: 1.5; }
+.modal p.sub { font-size: 30px; font-weight: 600; margin-top: 6px; color: #333; }
+.modal .actions { display: flex; justify-content: center; gap: 100px; margin-top: 44px; }
+.modal .actions button { background: transparent; border: 0; font-size: 40px; font-weight: 800; cursor: pointer; padding: 10px 28px; color: #111; }
+.modal .actions button:hover { background: rgba(0,0,0,.12); }
+.modal .actions button.red { color: #c4232a; }
+.modal input[type=text] { width: 100%; height: 100px; font-size: 48px; text-align: center; font-weight: 800; border: 4px solid #2b1d12; background: #fff; margin-top: 26px; padding: 0 20px; font-family: inherit; }
+.modal-x { position: absolute; right: 18px; top: 10px; background: transparent; border: 0; font-size: 56px; cursor: pointer; font-weight: 900; }
+
+/* 저장 슬롯 */
+.slots { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; text-align: left; }
+.slot-row { display: flex; align-items: center; gap: 24px; background: #f2f2f2; border: 4px solid #555; padding: 18px 26px; cursor: pointer; font-size: 32px; font-weight: 700; min-width: 900px; }
+.slot-row:hover { background: #fff6dc; border-color: #ff9d00; }
+.slot-row .no { font-size: 40px; font-weight: 900; width: 60px; }
+.slot-row .meta { flex: 1; line-height: 1.35; }
+.slot-row .meta small { display: block; font-size: 24px; color: #555; font-weight: 600; }
+.slot-row .del { background: #c4232a; color: #fff; border: 0; font-size: 24px; padding: 8px 16px; cursor: pointer; font-weight: 800; }
+.slot-row.empty { color: #888; }
+.slot-row.empty.disabled { cursor: not-allowed; opacity: .55; }
+
+/* 설정 */
+.set-row { display: flex; align-items: center; gap: 30px; font-size: 32px; font-weight: 800; margin: 18px 0; text-align: left; }
+.set-row label { width: 220px; }
+.set-row input[type=range] { flex: 1; height: 14px; accent-color: #5a2aa8; }
+.set-row output { width: 70px; text-align: right; }
+.keys-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 36px; margin-top: 18px; text-align: left; }
+.key-row { display: flex; align-items: center; justify-content: space-between; font-size: 26px; font-weight: 700; }
+.key-btn { min-width: 150px; height: 52px; background: #fff; border: 3px solid #2b1d12; font-size: 24px; font-weight: 800; cursor: pointer; }
+.key-btn.listening { background: #ffd24d; }
+.set-section { font-size: 32px; font-weight: 900; margin-top: 26px; padding-top: 14px; border-top: 4px solid #aaa; text-align: left; }
+
+/* 의뢰 확인 팝업 */
+.req-modal { min-width: 1000px; text-align: left; }
+.req-modal .line { font-size: 36px; font-weight: 600; line-height: 1.5; }
+.req-modal .line.bold { font-weight: 900; }
+.req-modal .meta { margin-top: 24px; font-size: 30px; font-weight: 800; color: #5a2aa8; }
+.req-modal .meta span { color: #111; }
+
+/* 도감 (펼친 책) */
+.book-layer { position: absolute; inset: 0; z-index: 70; display: none; background: rgba(0,0,0,.65); }
+.book-layer.show { display: block; }
+.book { position: absolute; left: 210px; top: 110px; width: 1500px; height: 860px; background: url('../image/book.png') center / 100% 100% no-repeat; animation: pop .2s; }
+.book .ribbon { position: absolute; left: 650px; top: -40px; width: 120px; height: 150px; background: #3a2a60; color: #ffd24d; font-size: 50px; font-weight: 900; display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%); }
+.book .page-l { position: absolute; left: 80px; top: 80px; width: 640px; height: 700px; }
+.book .page-r { position: absolute; left: 790px; top: 80px; width: 620px; height: 700px; color: #3a2210; }
+.book .chips { display: flex; gap: 12px; margin-bottom: 14px; }
+.book .chip { background: rgba(255,255,255,.7); }
+.book .chip.active { background: #ffd24d; }
+.book .blist { height: 620px; overflow-y: auto; padding-right: 10px; }
+.book .blist::-webkit-scrollbar { width: 12px; }
+.book .blist::-webkit-scrollbar-thumb { background: #7a5a30; border-radius: 6px; }
+.book .brow { display: flex; align-items: center; gap: 16px; padding: 6px 8px; border-bottom: 2px dashed rgba(90,50,20,.35); cursor: pointer; font-size: 26px; font-weight: 800; color: #3a2210; }
+.book .brow:hover, .book .brow.sel { background: rgba(255,210,77,.45); }
+.book .brow img { width: 64px; height: 64px; }
+.book .brow .nm { flex: 1; }
+.book .brow .vals { font-size: 22px; display: flex; gap: 10px; }
+.book .brow.locked { opacity: .5; }
+.book .detail { text-align: center; padding-top: 30px; }
+.book .detail img { width: 200px; height: 200px; margin: 0 auto 10px; background: rgba(255,255,255,.4); border-radius: 50%; padding: 20px; }
+.book .detail h4 { font-size: 52px; font-weight: 900; }
+.book .detail .kind { font-size: 28px; font-weight: 700; margin-bottom: 20px; }
+.book .detail .st { display: flex; justify-content: space-between; max-width: 380px; margin: 8px auto; font-size: 34px; font-weight: 800; }
+.book .detail .price { margin-top: 24px; font-size: 28px; font-weight: 700; }
+.book .hint { text-align: center; font-size: 30px; font-weight: 700; margin-top: 260px; color: rgba(60,30,10,.7); }
+.book .book-close { position: absolute; right: 30px; top: 20px; background: transparent; border: 0; font-size: 56px; font-weight: 900; color: #f2d9a0; cursor: pointer; z-index: 3; }

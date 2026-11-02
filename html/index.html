@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오컬티스트의 아틀리에</title>
+  <!-- 고서 느낌의 명조 서체 (오프라인이면 시스템 명조/바탕체로 대체됨) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Nanum+Myeongjo:wght@400;700;800&display=swap">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/title.css">
+  <link rel="stylesheet" href="../css/counter.css">
+  <link rel="stylesheet" href="../css/workbench.css">
+  <link rel="stylesheet" href="../css/result.css">
+  <link rel="stylesheet" href="../css/settlement.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/intro.css">
+  <link rel="stylesheet" href="../css/tutorial.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+
+    <!-- ========== 타이틀 ========== -->
+    <section class="screen" id="screen-title">
+      <img class="bg" src="../image/background_title.png" alt="">
+      <div class="title-logo">
+        <p class="title-eyebrow">GAME DESIGN DOCUMENT</p>
+        <h1>오컬티스트의<br>아틀리에</h1>
+        <p class="title-sub">The Occultist's Atelier</p>
+      </div>
+      <nav class="title-menu">
+        <button class="btn" id="btn-new">새로운 게임</button>
+        <button class="btn" id="btn-continue">이어하기</button>
+        <button class="btn" id="btn-settings">설정</button>
+        <button class="btn" id="btn-quit">게임 종료</button>
+      </nav>
+      <p class="title-credit">임채원 · 정세원</p>
+    </section>
+
+    <!-- ========== 카운터 (손님 응대) ========== -->
+    <section class="screen" id="screen-counter">
+      <img class="bg" src="../image/background_1.png" alt="">
+      <div id="decor-layer"></div>
+
+      <div class="hud-box hud-day" id="c-day">1일차</div>
+      <div class="hud-box hud-rep"><span>평판</span><span class="stars" id="c-stars"></span><em id="c-rep-num"></em></div>
+      <div class="hud-box hud-gold"><img src="../image/coin.png" alt=""><span id="c-gold">340 G</span></div>
+      <button class="btn-menu" id="c-menu" title="메뉴 (ESC)">☰</button>
+
+      <img id="customer" class="customer" src="../image/character_1.png" alt="">
+
+      <div id="bubble" class="bubble">
+        <span class="bubble-tag" id="bubble-tag"></span>
+        <div class="bubble-text" id="bubble-text"></div>
+        <div class="bubble-need" id="bubble-need"></div>
+        <span class="bubble-next" id="bubble-next">▼</span>
+      </div>
+
+      <div id="choices" class="choices">
+        <button class="btn choice" id="btn-accept">쉽죠!</button>
+        <button class="btn choice" id="btn-reject">죄송합니다...</button>
+      </div>
+
+      <div id="crystal" class="crystal" title="수정구 (점술)">
+        <img src="../image/crystal_ball.png" alt="">
+        <div class="crystal-glow"></div>
+      </div>
+      <div class="crystal-gauge" id="crystal-gauge"><i></i></div>
+      <div class="crystal-count" id="crystal-count"></div>
+
+      <img id="counter-item" class="counter-item" src="../image/item_potion.png" alt="">
+      <div id="gain" class="gain"><img src="../image/coin.png" alt=""><span></span></div>
+
+    </section>
+
+    <!-- ========== 작업대 (제작) ========== -->
+    <section class="screen" id="screen-workbench">
+      <img class="bg" src="../image/background_2.png" alt="">
+
+      <button class="btn-menu btn-menu-sq" id="w-menu" title="메뉴 (ESC)">☰</button>
+      <button class="btn-chat" id="w-chat" title="의뢰 내용 보기">💬</button>
+
+      <div class="item-select" id="w-items"></div>
+
+      <div class="craft-panel" id="craft-panel">
+        <div class="craft-circle"></div>
+        <div class="slot" data-slot="0"></div>
+        <div class="slot" data-slot="1"></div>
+        <div class="slot" data-slot="2"></div>
+        <div class="slot" data-slot="3"></div>
+        <button class="btn btn-make" id="btn-make">만들기</button>
+      </div>
+      <p class="craft-hint" id="w-hint"></p>
+      <button class="btn btn-clear" id="btn-clear">재료 비우기</button>
+
+      <aside class="inv" id="inv">
+        <div class="inv-head">
+          <div class="inv-gold"><img src="../image/coin.png" alt=""><span id="w-gold">340 G</span></div>
+          <button class="inv-book" id="btn-book">도감</button>
+        </div>
+        <div class="inv-tabs" id="inv-tabs">
+          <button class="tab active" data-tab="all">전체</button>
+          <button class="tab" data-tab="plant">식물</button>
+          <button class="tab" data-tab="animal">동물</button>
+          <button class="tab" data-tab="mineral">광물</button>
+        </div>
+        <div class="inv-chips" id="inv-chips"></div>
+        <div class="inv-scroll" id="inv-scroll"></div>
+      </aside>
+    </section>
+
+    <!-- ========== 가마솥 컷신 ========== -->
+    <section class="screen" id="screen-cauldron">
+      <img class="bg" src="../image/background_4.png" alt="">
+      <div class="cauldron-wrap" id="cauldron-wrap">
+        <img id="cauldron-img" src="../image/cauldron.png" alt="">
+        <div class="bubbles" id="cauldron-bubbles"></div>
+      </div>
+      <div class="cauldron-ings" id="cauldron-ings"></div>
+      <p class="cauldron-text" id="cauldron-text">보글보글...</p>
+      <div class="flash" id="cauldron-flash"></div>
+    </section>
+
+    <!-- ========== 인트로 컷씬 (새 게임, 1일차 시작 전 한 번) ========== -->
+    <section class="screen" id="screen-intro">
+      <img class="bg" src="../image/background_3.png" alt="">
+      <div class="intro-vignette"></div>
+      <div class="intro-frame"><img id="intro-img" src="../image/cutscene_1.png" alt=""></div>
+      <p class="intro-text" id="intro-text"></p>
+      <div class="intro-next">클릭하여 계속 ▶</div>
+    </section>
+
+    <!-- ========== 완성품 확인 ========== -->
+    <section class="screen" id="screen-result">
+      <img class="bg" src="../image/background_2.png" alt="">
+      <div class="vignette"></div>
+      <img id="result-item" class="result-item" src="../image/item_potion.png" alt="">
+      <div class="result-name" id="result-name">-</div>
+      <button class="btn result-btn left" id="btn-discard">버리기</button>
+      <button class="btn result-btn right" id="btn-finish">완성</button>
+    </section>
+
+    <!-- ========== 정산 + 상점 ========== -->
+    <section class="screen" id="screen-settlement">
+      <img class="bg" src="../image/background_3.png" alt="">
+      <button class="corner-btn left" id="btn-mute" title="소리 켜기/끄기">♪</button>
+      <button class="corner-btn right" id="btn-full" title="전체 화면">⛶</button>
+
+      <div class="paper" id="paper-report">
+        <h2 id="rp-title">빨리 짐 싸!</h2>
+        <div class="paper-body" id="rp-body"></div>
+      </div>
+
+      <div class="shop" id="shop">
+        <div class="shop-title">상점</div>
+        <div class="shop-gold" id="shop-gold">1000G</div>
+        <div class="shop-tabs" id="shop-tabs">
+          <button class="shop-tab active" data-tab="land">부지</button>
+          <button class="shop-tab" data-tab="decor">가게 장식</button>
+          <button class="shop-tab" data-tab="facility">시설 강화</button>
+        </div>
+        <div class="paper shop-paper" id="shop-body"></div>
+      </div>
+
+      <button class="btn corner-action left" id="btn-shop">상점</button>
+      <button class="btn corner-action right" id="btn-nextday">다음 날 ▶</button>
+    </section>
+
+    <!-- ========== 공용 레이어 ========== -->
+    <div id="book-layer" class="book-layer"></div>
+    <div id="pause-menu" class="pause-menu"></div>
+    <div id="modal-layer" class="modal-layer"></div>
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- 튜토리얼 (처음 한 번만): 배경 어둡게 + 대상 글로우 + 고양이 말풍선 -->
+    <div id="tutorial" class="tutorial">
+      <div id="tut-spot" class="tut-spot"></div>
+      <div id="tut-box" class="tut-box">
+        <div class="tut-cat"><img src="../image/cat_face.png" alt=""></div>
+        <div class="tut-body">
+          <div id="tut-text"></div>
+          <div class="tut-foot"><span id="tut-step"></span><span class="tut-next">클릭하여 계속 ▶</span></div>
+        </div>
+      </div>
+      <button id="tut-skip" class="tut-skip">튜토리얼 건너뛰기</button>
+    </div>
+    <div id="drag-ghost" class="drag-ghost"></div>
+    <div id="fade" class="fade"></div>
+    <div id="daycard" class="daycard"></div>
+  </div>
+</div>
+
+<script src="../javascript/utils.js"></script>
+<script src="../javascript/ingredients.js"></script>
+<script src="../javascript/craft.js"></script>
+<script src="../javascript/customers.js"></script>
+<script src="../javascript/settings.js"></script>
+<script src="../javascript/audio.js"></script>
+<script src="../javascript/tutorial.js"></script>
+<script src="../javascript/save.js"></script>
+<script src="../javascript/game.js"></script>
+<script src="../javascript/modal.js"></script>
+<script src="../javascript/screen_title.js"></script>
+<script src="../javascript/screen_intro.js"></script>
+<script src="../javascript/screen_counter.js"></script>
+<script src="../javascript/screen_workbench.js"></script>
+<script src="../javascript/screen_result.js"></script>
+<script src="../javascript/screen_settlement.js"></script>
+<script src="../javascript/main.js"></script>
+</body>
+</html>
