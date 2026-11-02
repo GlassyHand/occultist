@@ -1,0 +1,8 @@
+/* 타이틀 화면 */
+#screen-title .title-logo { position: absolute; left: 160px; top: 170px; color: #fff; text-shadow: 0 6px 0 rgba(0,0,0,.55); }
+#screen-title .title-eyebrow { font-size: 30px; letter-spacing: 10px; color: #cfc2ff; margin-bottom: 20px; }
+#screen-title h1 { font-size: 170px; line-height: 1.12; font-weight: 900; }
+#screen-title .title-sub { font-size: 44px; margin-top: 26px; color: #e8dcff; letter-spacing: 4px; }
+#screen-title .title-menu { position: absolute; left: 1250px; top: 330px; display: flex; flex-direction: column; gap: 28px; }
+#screen-title .title-menu .btn { width: 520px; height: 116px; font-size: 48px; }
+#screen-title .title-credit { position: absolute; right: 60px; bottom: 40px; color: #ccc; font-size: 28px; }
